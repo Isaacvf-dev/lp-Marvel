@@ -1,21 +1,27 @@
 <template>
   <div class="container">
     <div class="row">
-      <div class="col">
-        <!-- <img
+      <div class="col" v-for="hero in heroList" :key="hero.id">
+        <img
+          :src="`${hero.thumbnail.path}.${hero.thumbnail.extension}`"
+          class="rounded"
+          style="height: 183px; object-fit: contain; cursor: pointer;"
+          :alt="hero.name"
+        />
+        
+      </div>
+      <div class="col-9">
+        <h3 class="mb-3">{{hero.name}}</h3>
+        <p>{{ hero.description }}</p>
+        <h3 class="mb-3 mt-4">COMICS</h3>
+        <div class="row">
+          <div v-for="comic in comics" :key="comic.id" class="col">
+            <!-- <img
           :src="`${hero.thumbnail.path}.${hero.thumbnail.extension}`"
           class="rounded"
           style="height: 183px; object-fit: contain; cursor: pointer;"
           :alt="hero.name"
         /> -->
-        
-      </div>
-      <div class="col-6">
-        <h2>{{hero.name}}</h2>
-        <p>{{ hero.description }}</p>
-        <h2>COMICS</h2>
-        <div class="row">
-          <div v-for="comic in comics" :key="comic.id" class="col">
             <p>{{ comic.name }}</p>
           </div>
         </div>
@@ -37,6 +43,7 @@ export default {
       url: this.$route.params.userId,
       hero: [],    
       comics: [],
+      comicsList: [],
       
     }
   },
@@ -44,7 +51,7 @@ export default {
     async getHeros() {      
       
         const response = await api.get("v1/public/characters/" + this.url + "?ts=1697537430805&apikey=5ab1683ff8983687562af2832b97ad1c&hash=3b818d94bef27e6dd1d6e9f41f98612c");
-        console.log(response.data)
+        
         this.heroList = response.data.data.results;
         this.showHero();        
       // } catch (error) {
@@ -56,17 +63,16 @@ export default {
       
     },
     async getComicsByHero() {      
-      
-      const response = await api.get("v1/public/characters/" + this.url + "?ts=1697537430805&apikey=5ab1683ff8983687562af2832b97ad1c&hash=3b818d94bef27e6dd1d6e9f41f98612c");
-      console.log(response.data)
-      this.heroList = response.data.data.results;
-      this.showHero();        
-    // } catch (error) {
-    //   this.$notify({
-    //     type: 'error',
-    //     title: `Unexpected error (${error})`,
-    //     text: "Unable to fetch heroes. Try later!",
-    //   });
+      try{
+        const response = await api.get("v1/public/comics" + this.url + "?ts=1697537430805&apikey=5ab1683ff8983687562af2832b97ad1c&hash=3b818d94bef27e6dd1d6e9f41f98612c")
+        console.log(this.url)
+        console.log(response.data)
+        this.comicsList = response.data.data.results;  
+      }
+           
+     catch (error) {
+      console.log(error)
+      }
     
   },
     showHero() {
@@ -84,6 +90,7 @@ export default {
   },
   mounted() {
     this.getHeros()
+    // this.getComicsByHero()
   },
 }
 </script>
