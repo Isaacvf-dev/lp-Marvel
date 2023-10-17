@@ -1,33 +1,51 @@
 <template>
-  <h2>Events Page</h2>
-  <p>{{ events.name }}</p>
+  <div class="container ms-5">
+    <div class="row ps-3">
+      <div class="col-6" v-for="event in eventsList"
+      :key="event.id">
+        <div class="row ">
+          <div class="col-6">
+            <img :src="`${event.thumbnail.path}.${event.thumbnail.extension}`" class=""
+              style="height: 223px; object-fit: contain; cursor: pointer;" :alt="event.title" />
+          </div>
+          <div class="col-6">
+            <h3 class="">{{ event.title }}</h3>   
+            <p>{{ event.description }}</p>
+            <p>DATE OF THE EVENT: {{ event.start }}</p>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+  </div>
 </template>
 
 <script>
 import api from "@/services/api.js";
 
 export default {
-  data(){
-    return {
-      heroList: [],
-      events: [],
-      comicsList: [],
+  name: "EventsPage",
+  data() {
+    return {      
+      eventsList: [],
+
     }
-    
+
   },
   methods: {
-    getHeros() {
-      const response = api.get("v1/public/characters?ts=1697537430805&apikey=5ab1683ff8983687562af2832b97ad1c&hash=3b818d94bef27e6dd1d6e9f41f98612c&limit=42")
-        this.heroList = response.data.data.results;        
-        this.showHero();
-      const comicsResponse = api.get(`v1/public/comics?ts=1697537430805&apikey=5ab1683ff8983687562af2832b97ad1c&hash=3b818d94bef27e6dd1d6e9f41f98612c&limit=42&title=${search}`) 
-      this.heroList = response.data.data.results;    
+    async getEvents() {
+      const response = await api.get("v1/public/events?ts=1697537430805&apikey=5ab1683ff8983687562af2832b97ad1c&hash=3b818d94bef27e6dd1d6e9f41f98612c&limit=42")
+      this.eventsList = response.data.data.results;
+      console.log(response.data)
+      
+      
     },
-    showHero(){
-      this.heroList.forEach((element) => {
-        this.events = element.events.items;
-      })
-    }
+    
+  },
+  mounted() {
+    this.getEvents()
   },
 }
 
