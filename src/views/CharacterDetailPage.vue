@@ -1,71 +1,74 @@
-<template>  
-  <div class="details bg-blue-secondary p-4">
-    
-    <h1 class="text-white">{{ hero.name }}</h1>
-    <p class="text-white">{{ hero.description }}</p>
-    <div v-if="series.length" class="list">
-      <h2 class="text-white">Series:</h2>
-      <ul v-for="serie in series" :key="serie.id">
-        <li class="text-white">{{ serie.name }}</li>
-      </ul>
-    </div>
-    <div v-if="events.length" class="list">
-      <h2 class="text-white">Eventos:</h2>
-      <ul v-for="event in events" :key="event.id">
-        <li class="text-white">{{ event.name }}</li>
-      </ul>
-    </div>
-    <div v-if="comics.length" class="list">
-      <h2 class="text-white">HQ's:</h2>
-      <ul v-for="comic in comics" :key="comic.id">
-        <li class="text-white">{{ comic.name }}</li>
-      </ul>
-    </div>
-    <div v-if="links.length" class="list">
-      <h2 class="text-white">Saiba mais em:</h2>
-      <ul v-for="link in links" :key="link.id">
-        <li class="text-white">
-          <a :href="link.url">{{ link.type }}</a>
-        </li>
-      </ul>
-    </div>
+<template>
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <!-- <img
+          :src="`${hero.thumbnail.path}.${hero.thumbnail.extension}`"
+          class="rounded"
+          style="height: 183px; object-fit: contain; cursor: pointer;"
+          :alt="hero.name"
+        /> -->
+        
+      </div>
+      <div class="col-6">
+        <h2>{{hero.name}}</h2>
+        <p>{{ hero.description }}</p>
+        <h2>COMICS</h2>
+        <div class="row">
+          <div v-for="comic in comics" :key="comic.id" class="col">
+            <p>{{ comic.name }}</p>
+          </div>
+        </div>
+        
+        
+        
+      </div>
+    </div>    
   </div>
 </template>
 
 <script>
-import api from "@/services/api.js";
-
-
+import api from "@/services/api.js"
 
 export default {
-  name: "Details",
-  data() {
-    return {      
+  data () {   
+    return {
       heroList: [],
       url: this.$route.params.userId,
-      hero: [],
-      series: [],
-      events: [],
+      hero: [],    
       comics: [],
-      links: [],
-    };
-  },
-  components: {    
+      
+    }
   },
   methods: {
     async getHeros() {      
-      try {
-        const response = await api.get("v1/public/characters/" + this.url + "?ts=1640212576&apikey=d1283b4d024b37009288459ead0ea7ea&hash=1ea41f7e69249d72e718c14b6cccd430");
+      
+        const response = await api.get("v1/public/characters/" + this.url + "?ts=1697537430805&apikey=5ab1683ff8983687562af2832b97ad1c&hash=3b818d94bef27e6dd1d6e9f41f98612c");
+        console.log(response.data)
         this.heroList = response.data.data.results;
         this.showHero();        
-      } catch (error) {
-        this.$notify({
-          type: 'error',
-          title: `Unexpected error (${error})`,
-          text: "Unable to fetch heroes. Try later!",
-        });
-      }
+      // } catch (error) {
+      //   this.$notify({
+      //     type: 'error',
+      //     title: `Unexpected error (${error})`,
+      //     text: "Unable to fetch heroes. Try later!",
+      //   });
+      
     },
+    async getComicsByHero() {      
+      
+      const response = await api.get("v1/public/characters/" + this.url + "?ts=1697537430805&apikey=5ab1683ff8983687562af2832b97ad1c&hash=3b818d94bef27e6dd1d6e9f41f98612c");
+      console.log(response.data)
+      this.heroList = response.data.data.results;
+      this.showHero();        
+    // } catch (error) {
+    //   this.$notify({
+    //     type: 'error',
+    //     title: `Unexpected error (${error})`,
+    //     text: "Unable to fetch heroes. Try later!",
+    //   });
+    
+  },
     showHero() {
       this.heroList.forEach((element) => {
         if (element.id == this.url) {
@@ -76,22 +79,15 @@ export default {
           this.links = element.urls;
         }
       });
-      track('Details', { 'hero': this.hero.name });
+      // track('Details', { 'hero': this.hero.name });
     },
   },
   mounted() {
-    this.getHeros();
+    this.getHeros()
   },
-};
+}
 </script>
 
-<style scoped lang="scss">
-.details {
-  min-height: 100vh;
-  text-align: center;
-  padding-bottom: 2rem;
-}
-.list {
-  text-align: start;
-}
+<style lang="scss" scoped>
+
 </style>
