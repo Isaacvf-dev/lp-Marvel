@@ -51,12 +51,7 @@
       </div>
     </div>
   </nav>
-  <p class="px-5 py-4 text-secondary" style="margin-left: 32px;">
-    <ion-icon name="home" class="pe-1" style="vertical-align: middle;" ></ion-icon>
-    <span style="vertical-align: middle;"> 
-      {{ $route.name === 'chardetail' ? 'Characters' : $route.name}} 
-    </span>
-  </p>
+ 
 </template>
 
 <script>
