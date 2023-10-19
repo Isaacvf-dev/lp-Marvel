@@ -5,16 +5,16 @@
 
     </form>
 
-    <div v-show="showCards" class="row justify-content-around">
+    <div class="row justify-content-around">
 
-      <div class="card bg-blue-tertiary my-3 p-0" style="width: 160px; height: 215px;" v-for="comic in comicsList"
+      <div class="col mb-4" v-for="comic in comicsList"
         :key="comic.id">
-        <img :src="`${comic.thumbnail.path}.${comic.thumbnail.extension}`" class="rounded"
-          style="height: 183px; object-fit: contain; cursor: pointer;" :alt="comic.title" />
-        <div class="card-body">
-          <p class="card-title text-center mb-2">{{ comic.title }}</p>
+        <img :src="`${comic.thumbnail.path}.${comic.thumbnail.extension}`" class="rounded mb-3"
+          style="height: 283px; object-fit: cover;" :alt="comic.title" />        
+        <p class="fw-bold mb-1">{{ comic.title }}</p>
+        <p>PAGES: {{ comic.pageCount }}</p>
 
-        </div>
+        
       </div>
     </div>
   </div>
@@ -32,7 +32,7 @@ export default {
       comicsList: [],
       search: "",
       comics: [],
-      showCards: true,
+      
     };
   },
   watch: {    
@@ -58,6 +58,7 @@ export default {
         const titleParam = this.search ? `&titleStartsWith=${this.search}`: ""
         const response = await api.get(`v1/public/comics?ts=1697537430805&apikey=5ab1683ff8983687562af2832b97ad1c&hash=3b818d94bef27e6dd1d6e9f41f98612c&limit=42${titleParam}`)
         this.comicsList = response.data.data.results;
+        console.log(this.comicsList)
         
 
       } catch (error) {

@@ -3,18 +3,19 @@
     <div class="row">
       <div class="col">
         <img :src="`${hero.thumbnail.path}.${hero.thumbnail.extension}`" class="rounded"
-          style="height: 183px; object-fit: contain; cursor: pointer;" :alt="hero.name" />
+          style="height: 324px; object-fit: contain;" :alt="hero.name" />
 
       </div>
-      <div class="col-9">
-        <h3 class="mb-3">{{ hero.name }}</h3>
-        <p>{{ hero.description }}</p>
-        <h3 class="mb-3 mt-4">COMICS</h3>
+      <div class="col-7">
+        <h2 class="mb-3">{{ hero.name }}</h2>
+        <p class="py-2">{{ hero.description }}</p>
+        <h2 class="mb-4 mt-5">COMICS</h2>
         <div class="row">
-          <div v-for="comic in comicsList" :key="comic.id" class="col">
-            <img :src="`${comic.thumbnail.path}.${comic.thumbnail.extension}`" class="rounded"
-              style="height: 183px; object-fit: contain; cursor: pointer;" :alt="comic.title" />
-            <p>{{ comic.title }}</p>
+          <div v-for="comic in comicsList" :key="comic.id" class="col mb-4">
+            <img :src="`${comic.thumbnail.path}.${comic.thumbnail.extension}`" class="rounded mb-3"
+              style="height: 318px; object-fit: contain;" :alt="comic.title" />
+            <p class="fw-bold mb-1">{{ comic.title }}</p>
+            <p>PAGES: {{ comic.pageCount }}</p>
           </div>
         </div>
 

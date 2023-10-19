@@ -3,15 +3,15 @@
     <div class="row ps-3">
       <div class="col-6" v-for="event in eventsList"
       :key="event.id">
-        <div class="row ">
-          <div class="col-6">
+        <div class="row mb-5">
+          <div class="col-4 me-4">
             <img :src="`${event.thumbnail.path}.${event.thumbnail.extension}`" class=""
-              style="height: 223px; object-fit: contain; cursor: pointer;" :alt="event.title" />
+              style="height: 223px; object-fit: cover;" :alt="event.title" />
           </div>
-          <div class="col-6">
-            <h3 class="">{{ event.title }}</h3>   
+          <div class="col">
+            <h3>{{ event.title.toUpperCase() }}</h3>   
             <p>{{ event.description }}</p>
-            <p>DATE OF THE EVENT: {{ event.start }}</p>
+            <p><span class="fw-bold">DATE OF THE EVENT:</span> {{ event.start }}</p>
           </div>
 
         </div>

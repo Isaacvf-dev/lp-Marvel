@@ -1,5 +1,5 @@
 <template>
-  <div class="home bg-blue-secondary p-5">
+  <div class="home p-5">
     <form class="d-flex mb-3">
       <input
         class="form-control me-2"
@@ -14,19 +14,19 @@
       
       <div
         @click="goToDetails(hero)"
-        class="card bg-blue-tertiary my-3 p-0"
-        style="width: 160px; height: 215px;"
+        class="card my-3 p-0"
+        style="width: 187px; height: auto; text-decoration: underline;"
         v-for="hero in filteredList"
         :key="hero.id"
       >
         <img
           :src="`${hero.thumbnail.path}.${hero.thumbnail.extension}`"
-          class="rounded"
-          style="height: 183px; object-fit: contain; cursor: pointer;"
+          class="card-img-top"
+          style="height: 183px; object-fit: cover; cursor: pointer;"
           :alt="hero.name"
         />
         <div class="card-body">
-          <p class="card-title text-center mb-2">{{ hero.name }}</p>
+          <p class="card-text fw-bold text-sm-start fs-6">{{ hero.name }}</p>
           
         </div>
       </div>
