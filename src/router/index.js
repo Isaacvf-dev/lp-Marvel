@@ -5,12 +5,12 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      name: 'welcome',
+      name: 'Home',
       component: () => import('../views/WelcomePage.vue')
     },
     {
       path: '/characters',
-      name: 'characters',
+      name: 'Characters',
       // route level code-splitting
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
@@ -18,17 +18,17 @@ const router = createRouter({
     },
     {
       path: '/comics',
-      name: 'comics',      
+      name: 'Comics',      
       component: () => import('../views/ComicsPage.vue')
     },
     {
       path: '/events',
-      name: 'events',      
+      name: 'Events',      
       component: () => import('../views/EventsPage.vue')
     },
     {
       path: '/contact',
-      name: 'contact',      
+      name: 'Contact',      
       component: () => import('../views/ContactPage.vue')
     },
     {

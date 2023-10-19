@@ -1,5 +1,5 @@
 <template>
-  <div class="home bg-blue-secondary p-5">
+  <div class="home bg-blue-secondary px-5">
     <form class="d-flex mb-3">
       <input class="form-control me-2" type="search" placeholder="Search" v-model="search"/>
 

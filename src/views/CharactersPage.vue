@@ -1,5 +1,5 @@
 <template>
-  <div class="home p-5">
+  <div class="home px-5">
     <form class="d-flex mb-3">
       <input
         class="form-control me-2"
