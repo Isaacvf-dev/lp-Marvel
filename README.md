@@ -1,29 +1,53 @@
-# Marvel-API-Project
+<h1 align="center">
+  💻<br>Landing Page - Marvel API
+</h1>
 
-This template should help get you started developing with Vue 3 in Vite.
+![Final result of the project](public/preview.png)
 
-## Recommended IDE Setup
+<h4 align="center"><a href="https://marvel-the-api.netlify.app/">Click to visit the project</a></h4>
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+---
 
-## Customize configuration
+## 💼 Technologies used
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+To develop this website I used the following technologies:
 
-## Project Setup
+- HTML;
+- Bootstrap;
+- Vue;
 
-```sh
+---
+
+## Setup
+
+Make sure to install the dependencies:
+
+```bash
+# npm
 npm install
 ```
 
-### Compile and Hot-Reload for Development
+## Development Server
 
-```sh
+Start the development server on `http://localhost:3000`:
+
+```bash
+# npm
 npm run dev
 ```
+---
 
-### Compile and Minify for Production
+<h2>Author</h2>
 
-```sh
-npm run build
-```
+<table>
+  <tr>    
+    <td align="center">
+      <a href="https://github.com/Isaacvf-dev">
+        <img src="https://avatars.githubusercontent.com/u/123469000?v=4" width="100px;" alt="Foto do Isaac Vieira no GitHub"/><br>
+        <sub>
+          <b>Isaac Vieira</b>
+        </sub>
+      </a>
+    </td>
+  </tr>
+</table>
