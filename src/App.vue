@@ -11,6 +11,6 @@ import Breadcrumb from './components/Breadcrumb.vue';
   <RouterView />
 </template>
 
-<style scoped>
-
-</style>
+<style lang="sass">
+    @import '../node_modules/@fontsource/roboto/index.css'
+  </style>
