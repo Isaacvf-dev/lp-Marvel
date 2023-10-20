@@ -12,5 +12,7 @@ import Breadcrumb from './components/Breadcrumb.vue';
 </template>
 
 <style>
-    @import '../node_modules/@fontsource/roboto/index.css'
+body {
+  font-family: 'Roboto', sans-serif;
+}
 </style>
