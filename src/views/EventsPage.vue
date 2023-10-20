@@ -1,14 +1,14 @@
 <template>
   <div class="container ms-5">
     <div class="row ps-3">
-      <div class="col-6" v-for="event in eventsList"
+      <div class="col-md-6 col-12" v-for="event in eventsList"
       :key="event.id">
         <div class="row mb-5">
-          <div class="col-4 me-4">
+          <div class="col-md-4 col-12 me-4">
             <img :src="`${event.thumbnail.path}.${event.thumbnail.extension}`" class=""
               style="height: 223px; object-fit: cover;" :alt="event.title" />
           </div>
-          <div class="col-5">
+          <div class="col-md-6 col-12 ms-md-4">
             <h4 class="fw-bold">{{ event.title.toUpperCase() }}</h4>   
             <p class="truncate-text">{{ event.description.toUpperCase() }}</p>
             <p><span class="fw-bold">DATE OF THE EVENT:</span> {{ formatEventDate(event.start) }}</p>

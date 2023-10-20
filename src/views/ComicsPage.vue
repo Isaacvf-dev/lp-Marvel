@@ -37,8 +37,7 @@ export default {
   },
   watch: {    
     search() {
-      this.debounce(this.getcomics(), 500)
-      console.log("HERE")
+      this.debounce(this.getcomics(), 500)      
     }
   },
   components: {
